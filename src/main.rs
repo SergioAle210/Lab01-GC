@@ -14,6 +14,7 @@ fn main() {
 
     draw_polygon1(&mut fb);
     draw_polygon2(&mut fb);
+    draw_polygon3(&mut fb);
 
     fb.save_as_bmp("output.bmp").unwrap();
 }
@@ -51,6 +52,22 @@ fn draw_polygon2(fb: &mut Framebuffer) {
 
     let border_color = Color::new(255, 255, 255); // Blanco
     let fill_color = Color::new(0, 0, 255); // Azul
+
+    fb.draw_polygon(&vertices, border_color.clone(), fill_color);
+
+    // Dibujar contorno
+    draw_polygon_border(fb, &vertices, border_color);
+}
+
+fn draw_polygon3(fb: &mut Framebuffer) {
+    let vertices = vec![
+        Vec3::new(377.0, 249.0, 0.0),
+        Vec3::new(411.0, 197.0, 0.0),
+        Vec3::new(436.0, 249.0, 0.0),
+    ];
+
+    let border_color = Color::new(255, 255, 255); // Blanco
+    let fill_color = Color::new(255, 0, 0); // Rojo
 
     fb.draw_polygon(&vertices, border_color.clone(), fill_color);
 
